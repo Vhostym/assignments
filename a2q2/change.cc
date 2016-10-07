@@ -37,7 +37,7 @@ void sort(int arg[], int len) {
 
 
 int main(int argc, char *argv[]) {
- stringstream str = (basic_stringstream<char>) argv[argc - 2];
+ stringstream str = (basic_stringstream<char>) argv[argc - 1];
  int val;
  str >> val;
  int remainder = (int) val;
@@ -45,6 +45,11 @@ int main(int argc, char *argv[]) {
  int arr[argc - 1];
  set(argv, argc - 1, arr);
  sort(arr, argc - 2);
+
+ for (int i = 0; i < arr.length(); ++i) {
+  cout << " " << arr[i];
+ }
+
  int quotient;
  for (int i = 0; i < argc - 2; ++i) {
   quotient = val / arr[i];
