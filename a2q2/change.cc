@@ -1,10 +1,41 @@
-# include <iostream>
-# include <string>
-# include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+
 using namespace std;
 
-void set(char *arg[], int len, int res[]);
-void sort(char *arg[], int len);
+
+void set(char *arg[], int len, int res[]) {
+ for (int i = 0; i < len; ++i) {
+  res[i] = (int) *arg[i];
+ }
+}
+
+int findmin(int arg[], int len) {
+  int min = INT_MAX;
+  int index = -1;
+  for (int i = 0; i < len; ++i) {
+    if (arg[i] <= INT_MAX) {
+      min = arg[i];
+      index = i;
+    }
+  }
+  if (index == -1) {
+    return -1;
+  } else {
+    arg[index] = INT_MAX;
+    return min;
+  }
+}
+
+void sort(int arg[], int len) {
+  int array[len];
+  for (int i = 0; i < len; ++i) {
+    array[i] = findmin(arg, len);
+  }
+  arg = array;
+}
+
 
 int main(int argc, char *argv[]) {
  stringstream str = (basic_stringstream<char>) argv[argc - 2];
@@ -24,36 +55,4 @@ int main(int argc, char *argv[]) {
    return 0;
   }
  }
-}
-
-
-void set(char *arg[], int len, int res[]) {
- for (int i = 0; i < len; ++i) {
-  res[i] = (int) *arg[i];
- }
-}
-
-int findmin(int &arg[], int len) {
-  int min = INT_MAX;
-  int index = -1;
-  for (int i = 0; i < len; ++i) {
-    if (arg[i] <= INT_MAX) {
-      min = arg[i];
-      index = i;
-    }
-  }
-  if (index == -1) {
-    return -1;
-  } else {
-    arg[index] = INT_MAX;
-    return min;
-  }
-}
-
-void sort(int *arg, int len) {
-  int *array[len];
-  for (int i = 0; i < len; ++i) {
-    array[i] = findmin(arg, len);
-  }
-  arg = array;
 }
