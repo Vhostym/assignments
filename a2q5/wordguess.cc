@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int guess(string secret, string word) {
 int main(int argc, char *argv[]) {
     string secret;
     if (argc == 2) {
-        ifstream file{argc[1]};
+        ifstream file{argv[1]};
         if (!(file >> secret)) {
             cerr << "file cannot be opened" << endl;
             return 1;
@@ -52,7 +53,7 @@ int main(int argc, char *argv[]) {
     int correctLetters = 0;
     while (cin >> word) {
         correctLetters = guess(secret, word);
-        if (correctLetters == secret.length) {
+        if (correctLetters == secret.length()) {
             cout << "you guessed correctly!" << endl;
             return 0;
         } else if (correctLetters != -1) {
