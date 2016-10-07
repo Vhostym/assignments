@@ -37,14 +37,14 @@ void addToIntArray(IntArray &arr) {
 }
 
 IntArray *readIntArray() {
-    IntArray *arr{0, 0, new int[0]};
+    IntArray *arr{0, 0, new int[1]};
     addToIntArray(arr);
     return arr;
 }
 
 void printIntArray(IntArray &arr) {
     for (int i = 0; i < arr.size; ++i) {
-        cout << n;
+        cout << arr.contents[i];
         if (i != arr.size - 1) {
             cout <<" ";
         }
