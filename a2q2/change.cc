@@ -42,11 +42,11 @@ int main(int argc, char *argv[]) {
  str >> val;
  int remainder = (int) val;
  cout << "val " << val << endl;
- int arr[argc - 1];
- set(argv, argc - 1, arr);
- sort(arr, argc - 2);
+ int *arr = new int[argc - 2];
+ set(argv, argc - 1, *arr);
+ sort(*arr, argc - 2);
 
- for (int i = 0; i < arr.length(); ++i) {
+ for (int i = 0; i < argc - 2; ++i) {
   cout << " " << arr[i];
  }
 
