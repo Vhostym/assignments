@@ -37,7 +37,7 @@ void addToIntArray(IntArray &arr) {
 }
 
 IntArray *readIntArray() {
-    IntArray *arr{0, 0, new int[1]};
+    IntArray arr = IntArray{0, 0, new int[0]};
     addToIntArray(arr);
     return arr;
 }
