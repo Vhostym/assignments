@@ -4,6 +4,7 @@
 
 using namespace std;
 
+const int imax = std::numeric_limits<int>::max();
 
 void set(char *arg[], int len, int res[]) {
  for (int i = 0; i < len; ++i) {
@@ -12,10 +13,10 @@ void set(char *arg[], int len, int res[]) {
 }
 
 int findmin(int arg[], int len) {
-  int min = INT_MAX;
+  int min = imax;
   int index = -1;
   for (int i = 0; i < len; ++i) {
-    if (arg[i] <= INT_MAX) {
+    if (arg[i] <= imax) {
       min = arg[i];
       index = i;
     }
@@ -23,7 +24,7 @@ int findmin(int arg[], int len) {
   if (index == -1) {
     return -1;
   } else {
-    arg[index] = INT_MAX;
+    arg[index] = imax;
     return min;
   }
 }
