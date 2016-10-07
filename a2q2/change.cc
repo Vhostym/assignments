@@ -28,8 +28,8 @@ int findmin(int arg[], int len) {
 }
 
 void sort(int arg[], int len) {
-  int array[len];
-  for (int i = 0; i < len; ++i) {
+  int array[len - 1];
+  for (int i = 1; i < len; ++i) {
     array[i] = findmin(arg, len);
   }
   arg = array;
@@ -41,8 +41,10 @@ int main(int argc, char *argv[]) {
  int val;
  str >> val;
  int remainder = (int) val;
+ cout << "val " << val << endl;
  int arr[argc - 1];
  set(argv, argc - 1, arr);
+ sort(arr, argc - 2);
  int quotient;
  for (int i = 0; i < argc - 2; ++i) {
   quotient = val / arr[i];
