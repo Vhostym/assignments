@@ -9,24 +9,21 @@ struct IntArray{
 };
 
 void updateSize(IntArray &arr) {
+
     if (arr.size == 0) {
         arr.capacity = 5;
-        arr.contents = int[5];
+        int array[5];
+        arr.contents = array;
     } else {
         arr.capacity = 2 * arr.capacity;
         int * val = arr.contents;
-        arr.contents = int[arr.capacity];
+        int array[arr.capacity];
+        arr.contents = array;
         for (int i = 0; i < arr.capacity / 2; ++i) {
             arr.contents[i] = val[i];
         }
         delete val;
     }
-}
-
-IntArray *readIntArray() {
-    IntArray *arr{0, 0, nullptr};
-    addToIntArray(arr);
-    return arr;
 }
 
 void addToIntArray(IntArray &arr) {
@@ -37,6 +34,12 @@ void addToIntArray(IntArray &arr) {
         arr.contents[arr.size] = n;
         arr.size += 1;
     }
+}
+
+IntArray *readIntArray() {
+    IntArray *arr{0, 0, new int[0]};
+    addToIntArray(arr);
+    return arr;
 }
 
 void printIntArray(IntArray &arr) {
