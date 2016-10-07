@@ -6,48 +6,37 @@ using namespace std;
 int main() {
  int spaces = 0;
  string line;
+ string character;
  bool semicolon = false;
- bool comment = false;
  while (cin) {
   getline(cin, line);
   istringstream iss(line);
-  while (iss >> line) {
-   if (comment && line != "\n") {
-    cout << " " << line;
-    continue;
-   } else if (comment) {
-    comment = false;
-    semicolon = true;
-    continue;
-   } else if (semicolon && line == "//") {
-    comment = true;
+  while (iss >> character) {
+   if (character == "//") {
     semicolon = false;
-    cout << line;
-    continue;
-   } else if (semicolon) {
+    string s1;
+    getline(iss, s1);
+    cout << s1;
+   }else if (semicolon) {
     cout << endl;
     for (int i = 0; i < spaces; ++i) {
      cout << " ";
     }
-    cout << line;
+    cout << character;
     semicolon = false;
-    continue;
-   } else if (line == ";") {
-    cout << " " << line;
+   } else if (character == ";") {
+    cout << " " << character;
     semicolon = true;
-   } else if (line == "{") {
+   } else if (character == "{") {
     spaces += 1;
-    cout << " " << line << endl;
-   } else if (line == "}") {
+    cout << " " << character << endl;
+   } else if (character == "}") {
     if (spaces > 0) {
      spaces -= 1;
     }
-    cout << " " << line << endl;
-   } else if (line == "//") {
-    cout << " " << line;
-    comment = true;
+    cout << " " << character << endl;
    } else {
-    cout << " " << line;
+    cout << " " << character;
    }
   }
  }
