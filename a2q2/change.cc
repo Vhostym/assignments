@@ -1,11 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include <limits>
 
 using namespace std;
-
-const int imax = std::numeric_limits<int>::max();
 
 void set(char *arg[], int len, int res[]) {
  for (int i = 0; i < len; ++i) {
@@ -14,10 +11,10 @@ void set(char *arg[], int len, int res[]) {
 }
 
 int findmin(int arg[], int len) {
-  int min = imax;
-  int index = -1;
+  int min = arg[0];
+  int index = 0;
   for (int i = 0; i < len; ++i) {
-    if (arg[i] <= imax) {
+    if (arg[i] <= min && arg[i] != -1) {
       min = arg[i];
       index = i;
     }
@@ -25,7 +22,7 @@ int findmin(int arg[], int len) {
   if (index == -1) {
     return -1;
   } else {
-    arg[index] = imax;
+    arg[index] = -1;
     return min;
   }
 }
