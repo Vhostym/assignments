@@ -9,7 +9,7 @@ bool validWord(string word) {
     } else {
         for (int i = 0; i < word.length(); ++i) {
             const char c = word.at(i);
-            if (i != 4 && word.find(c, i + 1)) {
+            if (i != 4 && -1 != word.find(c, i + 1)) {
                 return false;
             }
         }
