@@ -1,6 +1,6 @@
 # include <iostream>
 # include <string>
-#include <sstream>
+# include <sstream>
 using namespace std;
 
 void set(char *arg[], int len, int res[]);
@@ -26,25 +26,34 @@ int main(int argc, char *argv[]) {
  }
 }
 
- 
+
 void set(char *arg[], int len, int res[]) {
  for (int i = 0; i < len; ++i) {
   res[i] = (int) *arg[i];
  }
 }
 
-void sort(int *arg, int len) {
- for (int i = 1; i < len; ++i) {
-  if (arg[i] < arg[i - 1]) {
-   for (int k = 0; k < i; ++k) {
-    if (arg[k] >= arg[i]) {
-     int temp = arg[i];
-     arg[i] = arg[i - 1];
-     arg[i - 1] = arg[k];
-     arg[k] = temp;
-     break;
+int findmin(int &arg[], int len) {
+  int min = INT_MAX;
+  int index = -1;
+  for (int i = 0; i < len; ++i) {
+    if (arg[i] <= INT_MAX) {
+      min = arg[i];
+      index = i;
     }
-   }
   }
- }
+  if (index == -1) {
+    return -1;
+  } else {
+    arg[index] = INT_MAX;
+    return min;
+  }
+}
+
+void sort(int *arg, int len) {
+  int *array[len];
+  for (int i = 0; i < len; ++i) {
+    array[i] = findmin(arg, len);
+  }
+  arg = array;
 }
