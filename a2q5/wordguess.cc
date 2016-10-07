@@ -8,8 +8,8 @@ bool validWord(string word) {
         return false;
     } else {
         for (int i = 0; i < word.length(); ++i) {
-            char c = word.at(i);
-            if (word.find(c, 0, i) || word.find(c, i)) {
+            const char c = word.at(i);
+            if (word.find(c, i)) {
                 return false;
             }
         }
