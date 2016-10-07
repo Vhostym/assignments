@@ -16,7 +16,7 @@ void updateSize(IntArray &arr) {
         arr.contents = array;
     } else {
         arr.capacity = 2 * arr.capacity;
-        int * val = arr.contents;
+        int* val = arr.contents;
         int array[arr.capacity];
         arr.contents = array;
         for (int i = 0; i < arr.capacity / 2; ++i) {
@@ -37,7 +37,7 @@ void addToIntArray(IntArray &arr) {
 }
 
 IntArray *readIntArray() {
-    IntArray arr = IntArray{0, 0, new int[0]};
+    IntArray* arr = new IntArray{0, 0, new int[0]};
     addToIntArray(arr);
     return arr;
 }
