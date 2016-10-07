@@ -22,7 +22,6 @@ void updateSize(IntArray &arr) {
         for (int i = 0; i < arr.capacity / 2; ++i) {
             arr.contents[i] = val[i];
         }
-        delete val;
     }
 }
 
@@ -52,3 +51,6 @@ void printIntArray(IntArray &arr) {
     cout << endl;
 }
 
+int main() {
+return 0;
+}
